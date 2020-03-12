@@ -14,10 +14,12 @@ ARG APPMETRICS_AAI
 ARG APPMETRICS_TARGET
 ARG APPMETRICS_PROMETHEUS
 ARG APPMETRICS_GRAYLOG
+# CF buildpack version
+ARG CF_BUILDPACK=v3.7.0
 
 # Checkout CF Build-pack here
 RUN mkdir -p buildpack/.local && \
-   (wget -qO- https://github.com/mxclyde/cf-mendix-buildpack/archive/telegrafext.tar.gz \
+   (wget -qO- https://github.com/mendix/cf-mendix-buildpack/archive/${CF_BUILDPACK}.tar.gz \
    | tar xvz -C buildpack --strip-components 1)
 
 # Copy python scripts which execute the buildpack (exporting the VCAP variables)
